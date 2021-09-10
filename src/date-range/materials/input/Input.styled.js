@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FlexRow } from "../global/container.styled";
-import { fonts, colors } from '../global/theme';
+import { fonts } from '../global/theme';
 
 function getBorder(type) {
     return `

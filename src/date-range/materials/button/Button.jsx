@@ -1,5 +1,4 @@
 import { ButtonContainer, ButtonContent } from './Button.styled';
-import { colors } from '../global/theme';
 
 function Button (props) {
     const { type, action, enable, label } = props;

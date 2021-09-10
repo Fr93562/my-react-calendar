@@ -2,7 +2,6 @@ import date from '../../../../provider/date';
 import range from "../../../../provider/range";
 import action from "../../../../provider/action";
 import format from "../../../../provider/format";
-import { navigation } from "../../../../materials/global/theme";
 import { TableCell } from "../../../../materials/global/table.styled";
 import Day from '../../../../materials/day/Day';
 

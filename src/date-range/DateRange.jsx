@@ -103,7 +103,7 @@ class DateRange extends React.PureComponent {
     }
 
     getHighlight = () => {
-        const { dateStart, dateEnd } = this.state;
+        const { dateStart } = this.state;
         let highlight = '';
 
         if (!dateStart) {

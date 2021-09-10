@@ -1,11 +1,7 @@
 import styled from "styled-components";
 import { colors, fonts } from './theme';
 
-const width = 300;
-
 export const contentMaterials = ``;
-
-
 
 export const Legend = styled.time`
     font-family: ${fonts.primary};
