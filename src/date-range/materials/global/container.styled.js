@@ -32,7 +32,7 @@ export const FlexColumn = styled.article`
 
     position: absolute;
     right: 50%;
-    top: 18%;
+    top: 120px;
 
     background-color: white;
     margin-right: -${(width + 40)*0.5}px;
@@ -43,6 +43,4 @@ export const FlexColumn = styled.article`
     section {
         margin: 16px 0px 0px 0px;
     }
-
-    margin-bottom: 250px;
 `;
