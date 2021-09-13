@@ -1,3 +1,12 @@
+/**
+ * Composant UI
+ *
+ * Représente une image svg
+ * En fonction des props, on détermine le dessin et la couleur à utiliser
+ *
+ * @param {*} props - any: props reçu du composant dateRange
+ * @returns - jsx objects: éléments à afficher
+ */
 function Logo(props) {
     const { draw, color } = props;
 

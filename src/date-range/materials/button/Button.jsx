@@ -1,8 +1,17 @@
 import { ButtonContainer, ButtonContent } from './Button.styled';
 
+/**
+ * Composant UI
+ *
+ * Représente un bouton cliquable avec une action liée
+ * En fonction des props, il possède deux styles différents et peut-être séléctionnable ou non
+ *
+ * @param {*} props - any: props reçu du composant dateRange
+ * @returns - jsx objects: éléments à afficher
+ */
 function Button (props) {
     const { type, action, enable, label } = props;
-    console.log(type);
+
     return (
         <ButtonContainer enable={enable} >
             <ButtonContent type={type} onClick={enable() ? action : undefined} enable={enable()} >

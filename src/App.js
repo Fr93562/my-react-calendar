@@ -1,10 +1,16 @@
 import DateRange from './date-range/DateRange';
 
 function App(props) {
-  const { submit } = props;
+
+  function submit() {
+    console.log('is submit');
+  }
+
+  const rangeStart = '';
+  const rangeEnd = '';
 
   return (
-      <DateRange submitRange={submit} />
+      <DateRange submitRange={submit} rangeStart={rangeStart} rangeEnd={rangeEnd} />
   );
 }
 

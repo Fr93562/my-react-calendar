@@ -4,9 +4,22 @@ import { colors } from '../global/theme';
 import drawCalendar from '../assets/drawCalendar';
 import Logo from '../Logo/Logo';
 
+/**
+ * Composant UI
+ *
+ * Représente l'input cliquable avec une action liée
+ * En fonction des props, il possède trois styles différents et peut-être highlight
+ *
+ * @param {*} props - any: props reçu du composant dateRange
+ * @returns - jsx objects: éléments à afficher
+ */
 function Input (props) {
-    const { type, date, highlight } = props;
-    
+    const { type, date, highlight, pointer } = props;
+
+    /**
+     * Indique l'état du bouton
+     * @returns - string: état actuel
+     */
     function getState () {
         let response = '';
 
@@ -19,6 +32,10 @@ function Input (props) {
         return response;
     }
 
+    /**
+     * Indique les couleurs actuelles du bouton
+     * @returns - string: code hexadécimal
+     */
     function getColor () {
         let color= colors.grey;
         const state = getState ();
@@ -35,7 +52,7 @@ function Input (props) {
 
     return (
         <InputContainer type={type} color={getColor()}>
-            <InputContent color={getColor()}>
+            <InputContent color={getColor()} pointer={pointer}>
             <Logo draw={drawCalendar} color={getColor()} />
             {date ? 
                 format.dateReverse(date)

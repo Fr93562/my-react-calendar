@@ -16,7 +16,6 @@ export const InputContainer = styled(FlexRow)`
     svg {
         margin-right: 8px;
     }
-
 `;
 
 export const InputContent = styled.label`
@@ -31,4 +30,5 @@ export const InputContent = styled.label`
     font-size: ${fonts.label};
 
     color: ${props => props.color };
+    ${props => props.pointer && 'cursor: pointer;'}
 `;

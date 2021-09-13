@@ -4,6 +4,15 @@ import CalendarLabel from "./CalendarLabel/CalendarLabel";
 import { FlexRow } from '../../../materials/global/container.styled';
 import { TableBody, TableContainer } from "../../../materials/global/table.styled";
 
+
+/**
+ * Représente le body du calendrier
+ * Ce composant génère un calendrier virtuel du mois/année reçu par les props
+ * Il fournit ensuite ce calendrier virtuel aux composants enfants pour générer le tableau dynamiquement à l'aide de boucles
+ *
+ * @param {*} props - any: props reçu du composant dateRange
+ * @returns - jsx objects: éléments à afficher
+ */
 function CalendarBody(props) {
     const { setDate, dateStart, dateEnd, selectedYear, selectedMonth } = props;
 

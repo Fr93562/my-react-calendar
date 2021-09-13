@@ -5,20 +5,50 @@ import format from "../../../../provider/format";
 import { TableCell } from "../../../../materials/global/table.styled";
 import Day from '../../../../materials/day/Day';
 
+/**
+ * Représente une cellule du calendrier
+ * A partir des données reçues par le CalendarBody et CalendarRow, ce composant génère plusieurs états.
+ * Il indique si une cellule est séléctionnable ou non.
+ * Il calcule l'état de la cellule quand une variable est sélectionnée: start, range, end, alone
+ * Ces états sont transmis au composant UI pour modifier son affichage.
+ *
+ * @param {*} props - any: props reçu du composant dateRange
+ * @returns - jsx objects: éléments à afficher
+ */
 function CalendarCell(props) {
     const { setDate, dateStart, dateEnd, selectedYear, selectedMonth, days, position } = props;
     
+    /**
+     * Construit un objet date
+     * Utilise les props reçues pour déterminer le mois et l'année
+     * Utiliser l'event js pour déterminer le jour
+     *
+     * @param {*} e - event js: cellule sélectionnée au clic / keypress
+     * @param {*} day - any: jour correspondant. Généré au moment de la boucle de CalendarRow
+     */
     function getDate(e, day) {
         const date = `${selectedYear}-${format.dateRender(selectedMonth)}-${format.dateRender(day)}`;
         setDate(date);
     }
 
+    /**
+     * Permet l'utilisation de getDate via l'accessibilité avec la touche Entrée
+     * 
+     * @param {*} e - event js: cellule sélectionnée au clic / keypress
+     * @param {*} day - any: jour correspondant. Généré au moment de la boucle de CalendarRow
+     */
     function getDateAcces(e, day) {
         if (action.keyPress(e, 'Enter')) {
             getDate(e, day);
         }
     }
 
+    /**
+     * Calcule les jours séléctionnables
+     *
+     * @param {*} day - any: jour correspondant. Généré au moment de la boucle de CalendarRow
+     * @returns - boolean: true si séléctionnable
+     */
     function getEnableDays(day) {
         const actualYear = date.currentYear();
         const actualMonth = date.currentMonth();
@@ -37,6 +67,14 @@ function CalendarCell(props) {
         return response;
     }
 
+    /**
+     * Calcule si la cellule corresponds à dateStart ou dateEnd
+     * 
+     * @param {*} day - any: jour correspondant. Généré au moment de la boucle de CalendarRow
+     * @param {*} value - date: valeur utilisée comme référence
+     * @param {*} result - string: valeur à donner si la condition est vérifiée
+     * @returns 
+     */
     function getLimitDaySelected(day, value, result) {
         let response = '';
 
@@ -50,6 +88,13 @@ function CalendarCell(props) {
         return response;
     }
 
+    /**
+     * Calcule si la cellule corresponds à une date entre dateStart et dateEnd
+     * dateStart et dateEnd sont exclus de la condition
+     * 
+     * @param {*} day - any: jour correspondant. Généré au moment de la boucle de CalendarRow
+     * @returns - string: valeur à donner si la condition est vérifiée
+     */
     function getRangeDaySelected(day) {
         let response = '';
 
@@ -81,6 +126,12 @@ function CalendarCell(props) {
         return response;
     }
 
+    /**
+     * Méthode qui va déterminer l'état de la cellule
+     * Il vérifie de manière successive: date dé début, dates de milieu et date de fin ou date unique
+     * @param {*} day - any: jour correspondant. Généré au moment de la boucle de CalendarRow
+     * @returns - string: valeur à donner si la condition est vérifiée
+     */
     function getSelectedDay(day) {
         let response = '';
         response = getLimitDaySelected(day, dateStart, 'start');
