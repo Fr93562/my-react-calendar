@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const TableContainer = styled.table`
     min-width: 100%;
@@ -16,7 +16,7 @@ export const TableRow = styled.tr`
 `;
 
 export const TableParamCell = styled.th`
-`
+`;
 
 export const TableCell = styled.td`
 `;

@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { navigation } from "../global/theme";
+/* eslint-disable import/prefer-default-export */
+import styled from 'styled-components';
+import { navigation } from '../global/theme';
 
 export const Container = styled.div`
     min-height: 100%;

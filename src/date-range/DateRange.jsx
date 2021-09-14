@@ -7,13 +7,14 @@ import { Container } from './DateRange.styled';
 
 /**
  * @author: François Macko
- * 
+ *
  * Point d'entrée du composant dateRange
  * Cette classe gère l'affichage de l'input du formulaire et du calendrier
  * Il stocke les dates et leurs setters
  * Il contrôle également la plupart des actions au clavier
- * 
- * @requires - submitRange / function: fonction à appeller à la soumission du formulaire
+ *
+ * @requires - submitRange / function: fonction à appeler à la soumission du formulaire
+ * @requires - onOpen / function: fonction à appeler au moment de l'ouverture de la popin
  * @param - rangeStart / date: state qui corresponds à la date de départ
  * @param - rangeEnd / date: state qui corresponds à la date de fin
  */
@@ -32,6 +33,13 @@ class DateRange extends React.PureComponent {
      */
     handleAction = () => {
         const { open } = this.state;
+        const { onOpen } = this.props;
+
+        if (!open) {
+            onOpen();
+            this.resetDate();
+        }
+
         this.setState({ open: !open });
     }
 
@@ -92,22 +100,17 @@ class DateRange extends React.PureComponent {
         const { dateStart, dateEnd } = this.state;
 
         if (!dateStart) {
-
             this.setDateStart(date);
         } else if (dateStart && dateEnd) {
-
             this.setDateStart(date);
             this.setDateEnd('');
         } else if (dateStart) {
-
             const oldDateStart = new Date(dateStart);
             const newDateStart = new Date(date);
 
             if (oldDateStart <= newDateStart) {
-
                 this.setDateEnd(date);
             } else {
-
                 this.setDateStart(date);
             }
         }
@@ -154,20 +157,31 @@ class DateRange extends React.PureComponent {
 
     render() {
         const { dateStart, dateEnd, open } = this.state;
-        const { rangeStart, rangeEnd } = this.state;
+        const { rangeStart, rangeEnd } = this.props;
 
-        // TODO: à tester sur nec
         window.addEventListener('keydown', this.handleEchapp);
 
-        console.log(dateStart, dateEnd);
         return (
             <Container>
-                <Form action={this.handleAction} handleOpen={this.handleOpen} dateStart={rangeStart} dateEnd={rangeEnd} />
+                <Form
+                    action={this.handleAction}
+                    handleOpen={this.handleOpen}
+                    dateStart={rangeStart}
+                    dateEnd={rangeEnd}
+                />
                 {open && (
                     <>
-                        <Calendar setDate={this.setDate} submitDate={this.submitDate} resetDate={this.resetDate} dateStart={dateStart} dateEnd={dateEnd} highlight={this.getHighlight()} />
+                        <Calendar
+                            setDate={this.setDate}
+                            submitDate={this.submitDate}
+                            resetDate={this.resetDate}
+                            dateStart={dateStart}
+                            dateEnd={dateEnd}
+                            highlight={this.getHighlight()}
+                        />
                         <Background action={this.handleAction} />
-                    </>)}
+                    </>
+                )}
             </Container>
         );
     }

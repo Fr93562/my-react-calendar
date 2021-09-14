@@ -3,14 +3,16 @@
  */
 const defaultValues = { start: 'Date de début', end: 'Date de fin' };
 const days = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
-const months = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
+const months = [
+    'Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',
+    'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
 
 /**
- * Rajoute un 0 aux nombres inférieurs à 10. 
+ * Rajoute un 0 aux nombres inférieurs à 10.
  * Aide à la génération des objets dates
  *
  * @param {*} date : integer - partie de la date à traiter
- * @returns 
+ * @returns
  */
 function dateRender(date) {
     let response = date;
@@ -23,7 +25,7 @@ function dateRender(date) {
 
 /**
  * Inverse les paramètres d'une date
- * 
+ *
  * @example: AAAA/MM/JJ devient JJ/MM/AAAA
  * @param {*} date : string: date à manipuler
  * @returns date: string à utiliser
@@ -43,15 +45,15 @@ function dateReverse(date) {
  */
 function dateToArray(date) {
     const array = (date.split('-')).reverse();
-    const response = [parseInt(array[0], 10), parseInt(array[1], 10), parseInt(array[2], 10)]
+    const response = [parseInt(array[0], 10), parseInt(array[1], 10), parseInt(array[2], 10)];
 
     return response;
 }
 
 const format = {
-    defaultValues: defaultValues,
-    days: days,
-    months: months,
+    defaultValues,
+    days,
+    months,
     dateReverse,
     dateToArray,
     dateRender,

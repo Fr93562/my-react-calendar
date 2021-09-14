@@ -2,7 +2,7 @@
  * Renvoie l'année précédente
  * @returns - integer: année précédente
  */
-function min () {
+function min() {
     return new Date().getFullYear() - 1;
 }
 

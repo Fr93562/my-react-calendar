@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { navigation } from "./theme";
+import styled from 'styled-components';
+import { navigation } from './theme';
 
 const width = 384;
 const flexMaterials = `
@@ -32,10 +32,10 @@ export const FlexColumn = styled.article`
 
     position: absolute;
     right: 50%;
-    top: 120px;
+    top: 245px;
 
     background-color: white;
-    margin-right: -${(width + 40)*0.5}px;
+    margin-right: -${(width + 40) * 0.5}px;
 
     z-index: ${navigation.zIndex};
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);

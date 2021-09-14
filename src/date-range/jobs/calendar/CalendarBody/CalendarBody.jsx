@@ -1,9 +1,8 @@
 import date from '../../../provider/date';
-import CalendarRow from "./CalendarRow/CalendarRow";
-import CalendarLabel from "./CalendarLabel/CalendarLabel";
+import CalendarRow from './CalendarRow/CalendarRow';
+import CalendarLabel from './CalendarLabel/CalendarLabel';
 import { FlexRow } from '../../../materials/global/container.styled';
-import { TableBody, TableContainer } from "../../../materials/global/table.styled";
-
+import { TableBody, TableContainer } from '../../../materials/global/table.styled';
 
 /**
  * Représente le body du calendrier
@@ -14,23 +13,27 @@ import { TableBody, TableContainer } from "../../../materials/global/table.style
  * @returns - jsx objects: éléments à afficher
  */
 function CalendarBody(props) {
-    const { setDate, dateStart, dateEnd, selectedYear, selectedMonth } = props;
+    const {
+        setDate, dateStart, dateEnd, selectedYear, selectedMonth,
+    } = props;
 
-    function getRows(selectedYear, selectedMonth) {
-        const days = date.calendar(selectedYear, selectedMonth);
+    function getRows(year, month) {
+        const days = date.calendar(year, month);
         const rows = [];
 
         for (let i = 0; i < days.length; i += 7) {
-            const row = <CalendarRow 
-                            key={`m-calendar-row-${i}`}
-                            selectedMonth={selectedMonth}
-                            selectedYear={selectedYear}
-                            dateStart={dateStart}
-                            dateEnd={dateEnd}
-                            setDate ={setDate }
-                            days={days}
-                            increment={i}
-                        />
+            const row = (
+                <CalendarRow
+                    key={`m-calendar-row-${i}`}
+                    selectedMonth={month}
+                    selectedYear={year}
+                    dateStart={dateStart}
+                    dateEnd={dateEnd}
+                    setDate={setDate}
+                    days={days}
+                    increment={i}
+                />
+            );
             rows.push(row);
         }
         return rows;

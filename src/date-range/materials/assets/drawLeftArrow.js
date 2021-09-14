@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 /**
  * Draw d'une flèche gauche au format svg
  */

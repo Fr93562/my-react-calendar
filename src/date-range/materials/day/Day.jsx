@@ -1,5 +1,5 @@
 import { DayContainer, DayContent } from './Day.styled';
-import { navigation } from "../global/theme";
+import { navigation } from '../global/theme';
 
 /**
  * Composant UI
@@ -11,7 +11,9 @@ import { navigation } from "../global/theme";
  * @returns - jsx objects: éléments à afficher
  */
 function Day(props) {
-    const { enable, value, getDate, getDateAcces, getSelectedDay } = props;
+    const {
+        enable, value, getDate, getDateAcces, getSelectedDay,
+    } = props;
     const type = getSelectedDay(value);
 
     return (
@@ -22,9 +24,9 @@ function Day(props) {
             enable={enable}
             type={type}
         >
-            <DayContent 
+            <DayContent
                 enable={enable}
-                type={type}    
+                type={type}
             >
                 {value}
             </DayContent>

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { colors, fonts } from '../global/theme';
 
 export const ButtonContainer = styled.div`
@@ -14,19 +14,21 @@ export const ButtonContent = styled.button`
     border-radius: 8px;
     padding: 15px 24px;
 
-    ${props => props.type === 'full' && 
-        `
+    cursor: default;
+
+    ${(props) => props.role === 'full'
+        && `
         color: ${colors.white};
         background-color: ${props.enable ? colors.blue : colors.lightGrey};
         `
-    }
+}
 
-    ${props => props.type === 'minimalist' && 
-        `
+    ${(props) => props.role === 'minimalist'
+        && `
         background-color: ${colors.white};
         color: ${props.enable ? colors.black : colors.lightGrey};
         `
-    }
+}
 
-    ${props => props.enable && 'cursor: pointer;'}
+    ${(props) => props.enable && 'cursor: pointer;'}
 `;

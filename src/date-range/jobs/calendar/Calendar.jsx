@@ -19,14 +19,27 @@ import { Line } from '../../materials/global/decoration.styled';
 function Calendar(props) {
     const [selectedYear, setSelectedYear] = useState(date.currentYear());
     const [selectedMonth, setSelectedMonth] = useState(date.currentMonth());
-    const { setDate, submitDate, resetDate, dateStart, dateEnd, highlight } = props;
-    
+    const {
+        setDate, submitDate, resetDate, dateStart, dateEnd, highlight,
+    } = props;
+
     return (
         <FlexColumn>
             <CalendarHeader dateStart={dateStart} dateEnd={dateEnd} highlight={highlight} />
             <Line />
-            <CalendarNavigation selectedYear={selectedYear} setSelectedYear={setSelectedYear} selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth} />
-            <CalendarBody setDate={setDate} dateStart={dateStart} dateEnd={dateEnd} selectedYear={selectedYear} selectedMonth={selectedMonth} />
+            <CalendarNavigation
+                selectedYear={selectedYear}
+                setSelectedYear={setSelectedYear}
+                selectedMonth={selectedMonth}
+                setSelectedMonth={setSelectedMonth}
+            />
+            <CalendarBody
+                setDate={setDate}
+                dateStart={dateStart}
+                dateEnd={dateEnd}
+                selectedYear={selectedYear}
+                selectedMonth={selectedMonth}
+            />
             <Line />
             <CalendarFooter resetDate={resetDate} submitDate={submitDate} dateStart={dateStart} dateEnd={dateEnd} />
         </FlexColumn>

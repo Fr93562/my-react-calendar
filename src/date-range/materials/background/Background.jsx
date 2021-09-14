@@ -10,7 +10,7 @@ import { Container } from './Background.styled';
  * @param {*} props - any: props reçu du composant dateRange
  * @returns - jsx objects: éléments à afficher
  */
-function Background (props) {
+function Background(props) {
     const { action } = props;
 
     return (

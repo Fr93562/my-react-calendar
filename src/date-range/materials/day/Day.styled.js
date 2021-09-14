@@ -1,6 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { colors, fonts } from '../global/theme';
-
 
 export const DayContainer = styled.div`
     display: flex;
@@ -19,12 +18,12 @@ export const DayContainer = styled.div`
         border: 2px solid ${colors.blue};
     }
 
-    ${props => (props.type === 'alone' || props.type === 'start' || props.type === 'end')  && `
+    ${(props) => (props.type === 'alone' || props.type === 'start' || props.type === 'end') && `
         background-color: ${colors.blue};
         border: 2px solid ${colors.blue};
     `}
 
-    ${props => props.type === 'range' && `
+    ${(props) => props.type === 'range' && `
         background-color: ${colors.lightBlue};
         border-radius: unset;
 
@@ -32,9 +31,9 @@ export const DayContainer = styled.div`
             border: 2px solid transparent;
         }
         `
-    }
+}
 
-    ${props => !props.enable && `
+    ${(props) => !props.enable && `
         cursor: unset;
         
         &:hover {
@@ -43,18 +42,21 @@ export const DayContainer = styled.div`
     `}
 `;
 
-
 export const DayContent = styled.span`
     font-family: ${fonts.secondary};
     font-size: ${fonts.label};
     font-weight: bold;
-    color: ${ colors.black };
+    color: ${colors.black};
 
-    ${props => (props.type === 'alone' || props.type === 'start' || props.type === 'end')  && `
-        color: ${ colors.white };
+    ${(props) => (props.type === 'alone' || props.type === 'start' || props.type === 'end') && `
+        color: ${colors.white};
     `}
 
-    ${props => !props.enable && `
-    color: ${ colors.grey };
+    ${(props) => (props.type === 'range') && `
+    color: ${colors.blue};
+    `}
+
+    ${(props) => !props.enable && `
+    color: ${colors.grey};
     `}
 `;

@@ -1,4 +1,4 @@
-import Button from "../../../materials/button/Button";
+import Button from '../../../materials/button/Button';
 import { FlexRowSpaced } from '../../../materials/global/container.styled';
 
 /**
@@ -7,12 +7,14 @@ import { FlexRowSpaced } from '../../../materials/global/container.styled';
  * Se base sur les props du composant CalendarBody pour calculer l'état des boutons
  * Le bouton reset est disponible à partir du moment où une seule date est séléctionnée
  * Le bouton submit est uniquement si les deux dates ont été séléctionné
- * 
+ *
  * @param {*} props - any: props reçu du composant dateRange
  * @returns - jsx objects: éléments à afficher
  */
-function CalendarFooter (props) {
-    const { resetDate, submitDate, dateStart, dateEnd } = props;
+function CalendarFooter(props) {
+    const {
+        resetDate, submitDate, dateStart, dateEnd,
+    } = props;
 
     /**
      * Indique si le bouton reset doit être séléctionnable
@@ -42,8 +44,8 @@ function CalendarFooter (props) {
 
     return (
         <FlexRowSpaced>
-            <Button type={'minimalist'} enable={enableReset} action={resetDate} label={'Réinitialiser'} />
-            <Button type={'full'} enable={enableSubmit} action={submitDate} label={'Valider la sélection'} />
+            <Button type="minimalist" enable={enableReset} action={resetDate} label="Réinitialiser" />
+            <Button type="full" enable={enableSubmit} action={submitDate} label="Valider la sélection" />
         </FlexRowSpaced>
     );
 }

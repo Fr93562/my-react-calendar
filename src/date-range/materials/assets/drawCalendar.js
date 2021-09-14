@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 /**
  * Draw d'un calendrier au format svg
  */

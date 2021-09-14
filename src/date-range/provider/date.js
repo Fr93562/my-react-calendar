@@ -1,9 +1,10 @@
+/* eslint-disable no-plusplus */
 /**
  * Calcule le jour de la semaine où le 1ier du mois commmence
  *
  * @param {*} year : integer - année du mois visé
  * @param {*} month : integer - mois visé
- * @returns : integer - numéro du jour du début du mois 
+ * @returns : integer - numéro du jour du début du mois
  */
 function getStartMonth(year, month) {
     let response = new Date(year, month).getDay();
@@ -20,7 +21,7 @@ function getStartMonth(year, month) {
  *
  * @param {*} year : integer - année du mois visé
  * @param {*} month : integer - mois visé
- * @returns : integer - numéro du jour du début du mois 
+ * @returns : integer - numéro du jour du début du mois
  */
 function getDaysNumber(year, month) {
     const reference = 40;
@@ -37,36 +38,35 @@ function getDaysNumber(year, month) {
  * @param {*} month : integer - mois visé
  * @returns : array - composé de string vide et d'integer
  */
-function calendar (year, month) {
-
-    const monthStart = getStartMonth(year, month);
-    const monthPeriod = getDaysNumber(year, month);
-    const calendar = [];
+function calendar(year, month) {
+    const monthStart = getStartMonth(year, month - 1);
+    const monthPeriod = getDaysNumber(year, month - 1);
+    const currentCalendar = [];
 
     for (let i = 1; i < monthStart; i++) {
-        calendar.push('');
+        currentCalendar.push('');
     }
 
     for (let i = 1; i <= monthPeriod; i++) {
-        calendar.push(i);
+        currentCalendar.push(i);
     }
 
-    if (calendar.length % 7 !== 0) {
-        const max = (calendar.length + 7) - calendar.length % 7;
-        const rest = max - calendar.length;
+    if (currentCalendar.length % 7 !== 0) {
+        const max = (currentCalendar.length + 7) - (currentCalendar.length % 7);
+        const rest = max - currentCalendar.length;
 
         for (let i = 0; i < rest; i++) {
-            calendar.push('');
+            currentCalendar.push('');
         }
     }
-    return calendar;
+    return currentCalendar;
 }
 
 /**
  * Récupère l'année actuelle
  * @returns : integer - année actuelle
  */
-function currentYear () {
+function currentYear() {
     return new Date().getFullYear();
 }
 
@@ -74,23 +74,23 @@ function currentYear () {
  * Récupère le mois actuel
  * @returns : integer - mois actuel
  */
-function currentMonth () {
-    return new Date().getMonth();
+function currentMonth() {
+    return new Date().getMonth() + 1;
 }
 
 /**
  * Récupère le jour actual
  * @returns : integer - jour actuel
  */
-function currentDay () {
+function currentDay() {
     return new Date().getDate();
 }
 
 const date = {
-    calendar: calendar,
-    currentYear: currentYear,
-    currentMonth: currentMonth,
-    currentDay: currentDay,
+    calendar,
+    currentYear,
+    currentMonth,
+    currentDay,
 };
 
 export default date;

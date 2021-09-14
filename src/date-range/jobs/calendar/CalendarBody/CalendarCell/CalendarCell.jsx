@@ -1,8 +1,8 @@
 import date from '../../../../provider/date';
-import range from "../../../../provider/range";
-import action from "../../../../provider/action";
-import format from "../../../../provider/format";
-import { TableCell } from "../../../../materials/global/table.styled";
+import range from '../../../../provider/range';
+import action from '../../../../provider/action';
+import format from '../../../../provider/format';
+import { TableCell } from '../../../../materials/global/table.styled';
 import Day from '../../../../materials/day/Day';
 
 /**
@@ -16,8 +16,10 @@ import Day from '../../../../materials/day/Day';
  * @returns - jsx objects: éléments à afficher
  */
 function CalendarCell(props) {
-    const { setDate, dateStart, dateEnd, selectedYear, selectedMonth, days, position } = props;
-    
+    const {
+        setDate, dateStart, dateEnd, selectedYear, selectedMonth, days, position,
+    } = props;
+
     /**
      * Construit un objet date
      * Utilise les props reçues pour déterminer le mois et l'année
@@ -27,13 +29,13 @@ function CalendarCell(props) {
      * @param {*} day - any: jour correspondant. Généré au moment de la boucle de CalendarRow
      */
     function getDate(e, day) {
-        const date = `${selectedYear}-${format.dateRender(selectedMonth)}-${format.dateRender(day)}`;
-        setDate(date);
+        const newDate = `${selectedYear}-${format.dateRender(selectedMonth)}-${format.dateRender(day)}`;
+        setDate(newDate);
     }
 
     /**
      * Permet l'utilisation de getDate via l'accessibilité avec la touche Entrée
-     * 
+     *
      * @param {*} e - event js: cellule sélectionnée au clic / keypress
      * @param {*} day - any: jour correspondant. Généré au moment de la boucle de CalendarRow
      */
@@ -69,11 +71,11 @@ function CalendarCell(props) {
 
     /**
      * Calcule si la cellule corresponds à dateStart ou dateEnd
-     * 
+     *
      * @param {*} day - any: jour correspondant. Généré au moment de la boucle de CalendarRow
      * @param {*} value - date: valeur utilisée comme référence
      * @param {*} result - string: valeur à donner si la condition est vérifiée
-     * @returns 
+     * @returns
      */
     function getLimitDaySelected(day, value, result) {
         let response = '';
@@ -91,7 +93,7 @@ function CalendarCell(props) {
     /**
      * Calcule si la cellule corresponds à une date entre dateStart et dateEnd
      * dateStart et dateEnd sont exclus de la condition
-     * 
+     *
      * @param {*} day - any: jour correspondant. Généré au moment de la boucle de CalendarRow
      * @returns - string: valeur à donner si la condition est vérifiée
      */
@@ -102,15 +104,15 @@ function CalendarCell(props) {
             const dateStartBroken = format.dateToArray(dateStart);
             const dateEndBroken = format.dateToArray(dateEnd);
 
-            if (dateStartBroken[1] === selectedMonth && dateEndBroken[1] === selectedMonth &&
-                dateStartBroken[2] === selectedYear && dateEndBroken[2] === selectedYear) {
-
+            if (dateStartBroken[1] === selectedMonth && dateEndBroken[1] === selectedMonth
+                && dateStartBroken[2] === selectedYear && dateEndBroken[2] === selectedYear) {
                 if (dateStartBroken[0] < day && dateEndBroken[0] > day) {
                     response = 'range';
                 }
             } else {
-
-                if (dateStartBroken[1] === selectedMonth && dateStartBroken[2] === selectedYear && dateStartBroken[0] < day) {
+                if (dateStartBroken[1] === selectedMonth
+                    && dateStartBroken[2] === selectedYear
+                    && dateStartBroken[0] < day) {
                     response = 'range';
                 }
 
@@ -118,7 +120,10 @@ function CalendarCell(props) {
                     response = 'range';
                 }
 
-                if ((dateStartBroken[1] < selectedMonth && dateEndBroken[1] > selectedMonth) && (dateStartBroken[2] === selectedYear && dateEndBroken[2] === selectedYear)) {
+                if ((dateStartBroken[1] < selectedMonth
+                    && dateEndBroken[1] > selectedMonth)
+                    && (dateStartBroken[2] === selectedYear
+                    && dateEndBroken[2] === selectedYear)) {
                     response = 'range';
                 }
             }
@@ -145,7 +150,7 @@ function CalendarCell(props) {
         }
 
         if (dateStart && dateEnd && dateStart === dateEnd && response) {
-            response = 'alone'
+            response = 'alone';
         }
         return response;
     }
@@ -156,7 +161,7 @@ function CalendarCell(props) {
         <TableCell>
             <Day
                 enable={enable}
-                value = {days[position]}
+                value={days[position]}
                 getDate={getDate}
                 getDateAcces={getDateAcces}
                 getSelectedDay={getSelectedDay}

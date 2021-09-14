@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { InputContainer, InputContent } from './Input.styled';
 import format from '../../provider/format';
 import { colors } from '../global/theme';
@@ -13,21 +14,23 @@ import Logo from '../Logo/Logo';
  * @param {*} props - any: props reçu du composant dateRange
  * @returns - jsx objects: éléments à afficher
  */
-function Input (props) {
-    const { type, date, highlight, pointer } = props;
+function Input(props) {
+    const {
+        type, date, highlight, pointer,
+    } = props;
 
     /**
      * Indique l'état du bouton
      * @returns - string: état actuel
      */
-    function getState () {
+    function getState() {
         let response = '';
 
         if (date) {
             response = 'active';
         }
-        if (highlight ===type) {
-            response = 'selected'
+        if (highlight === type) {
+            response = 'selected';
         }
         return response;
     }
@@ -36,9 +39,9 @@ function Input (props) {
      * Indique les couleurs actuelles du bouton
      * @returns - string: code hexadécimal
      */
-    function getColor () {
-        let color= colors.grey;
-        const state = getState ();
+    function getColor() {
+        let color = colors.grey;
+        const state = getState();
 
         if (state) {
             if (state === 'active') {
@@ -53,12 +56,10 @@ function Input (props) {
     return (
         <InputContainer type={type} color={getColor()}>
             <InputContent color={getColor()} pointer={pointer}>
-            <Logo draw={drawCalendar} color={getColor()} />
-            {date ? 
-                format.dateReverse(date)
-                :
-                type === 'left' ? format.defaultValues.start : format.defaultValues.end
-            }
+                <Logo draw={drawCalendar} color={getColor()} />
+                {date
+                    ? format.dateReverse(date)
+                    : type === 'left' ? format.defaultValues.start : format.defaultValues.end}
             </InputContent>
 
         </InputContainer>

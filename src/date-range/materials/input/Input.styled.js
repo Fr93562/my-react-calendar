@@ -1,7 +1,12 @@
-import styled from "styled-components";
-import { FlexRow } from "../global/container.styled";
+import styled from 'styled-components';
+import { FlexRow } from '../global/container.styled';
 import { fonts } from '../global/theme';
 
+/**
+ * Indique s'il s'agit d'un border left ou bord right
+ * @param {*} type - string: right ou left
+ * @returns : string: css
+ */
 function getBorder(type) {
     return `
         border-top-${type}-radius: 10px;
@@ -10,8 +15,8 @@ function getBorder(type) {
 }
 
 export const InputContainer = styled(FlexRow)`
-    ${props => props.type && getBorder(props.type)}
-    border: 2px solid ${props => props.color };
+    ${(props) => props.type && getBorder(props.type)}
+    border: 2px solid ${(props) => props.color};
 
     svg {
         margin-right: 8px;
@@ -29,6 +34,6 @@ export const InputContent = styled.label`
     font-family: ${fonts.secondary};
     font-size: ${fonts.label};
 
-    color: ${props => props.color };
-    ${props => props.pointer && 'cursor: pointer;'}
+    color: ${(props) => props.color};
+    ${(props) => props.pointer && 'cursor: pointer;'}
 `;

@@ -13,20 +13,20 @@ import { colors } from '../global/theme';
  * @param {*} props - any: props reçu du composant dateRange
  * @returns - jsx objects: éléments à afficher
  */
-function Navigation (props) {
+function Navigation(props) {
     const { type, enable, action } = props;
     const color = enable() ? colors.black : colors.grey;
 
-        return (
-        <NavigationContainer type={type} >
-            <NavigationContent onClick={enable() ? action : undefined} enable={enable()} >
+    return (
+        <NavigationContainer type={type}>
+            <NavigationContent type="button" onClick={enable() ? action : undefined} enable={enable()}>
                 { type === 'before' ? (
                     <>
                         <Logo draw={drawLeftArrow} color={color} />
                     </>
                 ) : (
                     <>
-                        <Logo draw={drawRightArrow} color={color}/>
+                        <Logo draw={drawRightArrow} color={color} />
                     </>
                 )}
             </NavigationContent>

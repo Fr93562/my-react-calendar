@@ -9,12 +9,14 @@ import { ButtonContainer, ButtonContent } from './Button.styled';
  * @param {*} props - any: props reçu du composant dateRange
  * @returns - jsx objects: éléments à afficher
  */
-function Button (props) {
-    const { type, action, enable, label } = props;
+function Button(props) {
+    const {
+        type, action, enable, label,
+    } = props;
 
     return (
-        <ButtonContainer enable={enable} >
-            <ButtonContent type={type} onClick={enable() ? action : undefined} enable={enable()} >
+        <ButtonContainer enable={enable}>
+            <ButtonContent type="button" role={type} onClick={enable() ? action : undefined} enable={enable()}>
                 {label}
             </ButtonContent>
         </ButtonContainer>

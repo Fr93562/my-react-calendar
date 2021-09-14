@@ -5,7 +5,7 @@
  * @param {*} key : string - touche attendue
  * @returns : boolean - true si correspondance
  */
-function keyPress (event, key) {
+function keyPress(event, key) {
     let response = false;
 
     if (event.key && event.key === key) {
@@ -15,7 +15,7 @@ function keyPress (event, key) {
 }
 
 const action = {
-    keyPress: keyPress,
+    keyPress,
 };
 
 export default action;
